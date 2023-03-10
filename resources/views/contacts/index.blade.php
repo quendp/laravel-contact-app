@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contact App | Batch Adapta</title>
-</head>
-
-<body>
+@section('content')
     <h1>All Contacts</h1>
     <div>
         <a href='{{ route('contacts.create') }}'>Add Contacts</a>
@@ -20,6 +12,4 @@
         <?php endforeach?>
 
     </div>
-</body>
-
-</html>
+@endsection
