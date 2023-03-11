@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>My Contact</title>
+    <title>@yield('title', 'Contact App')</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
     <!-- Bootstrap -->
@@ -19,7 +19,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand text-uppercase" href="index.html">
+            <a class="navbar-brand text-uppercase" href='/'>
                 <strong>Contact</strong> App
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-toggler"
@@ -53,15 +53,9 @@
 
     @yield('content')
 
-<<<<<<< HEAD
-    <script src="{{asset('js/jquery.min.js')}}"></script>
-    <script src="{{asset('js/popper.min.j')}}s"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-=======
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
->>>>>>> e0f07ba160b031dc2584cd351cd06de3b99b936a
 </body>
 
 </html>

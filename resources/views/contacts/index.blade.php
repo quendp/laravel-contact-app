@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title', 'Contact App | All Contacts')
 @section('content')
     <main class="py-5">
         <div class="container">
@@ -60,7 +61,7 @@
                                     <?php
         foreach ($contacts as $id => $contact): ?>
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <th scope="row">{{ $id }}</th>
                                         <td>{{ $contact['name'] }}</td>
                                         <td>{{ $contact['phone'] }}</td>
                                         <td>alfred@test.com</td>
@@ -79,7 +80,26 @@
 
                                     <?php endforeach?>
 
-    </div>
-</body>
+                                </tbody>
+                            </table>
 
-</html>
+                            <nav class="mt-4">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+@endsection
