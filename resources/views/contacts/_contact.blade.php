@@ -4,7 +4,7 @@
     <td>{{ $contact['phone'] }}</td>
     <td>alfred@test.com</td>
     <td>Company one</td>
-    <td width="150">
+    <td>
         <a href="{{ route('contacts.show', $contact['id']) }}"
             class="btn btn-sm btn-circle btn-outline-info" title="Show"><i
                 class="fa fa-eye"></i></a>

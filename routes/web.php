@@ -1,5 +1,12 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContactNoteController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,45 +20,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-function getContacts()
-{
-    return [
-        1 => ['id' => '1', 'name' => 'John Doe', 'phone' => '1234567890'],
-        2 => ['id' => '2', 'name' => 'Jane Doe', 'phone' => '0987654321'],
-        3 => ['id' => '3', 'name' => 'John Smith', 'phone' => '5551234556'],
-    ];
-}
-Route::get('/', function () {
+Route::get('/', WelcomeController::class);
 
-    return view('welcome');
+Route::controller(ContactController::class)->name('contacts.')->group(function () {
+    Route::get('/contacts', 'index')->name('index');
+    Route::get('/contacts/create', 'create')->name('create');
+    Route::get('/contacts/{id}', 'show')->whereNumber('id')->name('show');
 });
 
-Route::get('/contacts', function () {
-    $companies = [
-        1 => ['name' => 'Company One', 'contacts' => 3],
-        2 => ['name' => 'Company Two', 'contacts' => 5],
-    ];
-    $contacts = getContacts();
-    return view('contacts.index', compact('contacts', 'companies'));
-})->name('contacts.index');
+Route::resource('/companies', CompanyController::class);
 
-Route::get('/contacts/{id}', function ($id) {
-    $contacts = getContacts();
-    abort_if(!isset($contacts[$id]), 404);
-    $contact = $contacts[$id];
-    return view('contacts.show')->with('contact', $contact);
-})->whereNumber('id')->name('contacts.show');
+Route::resources([
+    '/tags' => TagController::class,
+    '/tasks' => TaskController::class
+]);
 
-
-Route::get('/contacts/create', function () {
-    return view('contacts.create');
-})->name('contacts.create');
-
-// Route::get('/companies', function () {
-//     return "<h1>Companies Page</h1>";
-// });
-
-
-// Route::get('/companies/{name}', function ($name) {
-//     return "<h1>Company {$name}</h1>";
-// })->whereAlphaNumeric('name');
+Route::resource('/contacts.notes', ContactNoteController::class)->shallow();
+Route::resource('/activities', ActivityController::class)->parameter(
+    'activities',
+    'id'
+);
