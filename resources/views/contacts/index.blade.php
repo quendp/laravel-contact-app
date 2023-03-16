@@ -10,8 +10,8 @@
                             <div class="d-flex align-items-center">
                                 <h2 class="mb-0">All Contacts</h2>
                                 <div class="ml-auto">
-                                    <a href="{{ route('contacts.create') }}" class="btn btn-success">
-                                        <i class="fa fa-plus-circle"></i> Add New</a>
+                                    <a href="{{ route('contacts.create') }}" class="btn btn-success"><i
+                                            class="fa fa-plus-circle"></i> Add New</a>
                                 </div>
                             </div>
                         </div>
@@ -22,7 +22,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">First Name</th>
-                                        <th scope="col">Phone Number</th>
+                                        <th scope="col">Last Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Company</th>
                                         <th scope="col">Actions</th>
@@ -30,9 +30,9 @@
                                 </thead>
                                 <tbody>
                                     {{-- @forelse ($contacts as $id => $contact)
-                                        @include('contacts._contact', ['contact'])
+                                        @include('contacts._contact', ['contact' => $contact])
                                     @empty
-                                        <td colspan="6" class="text-center">No Contacts found</td>
+                                        <p>No contacts found.</p>
                                     @endforelse --}}
                                     @each('contacts._contact', $contacts, 'contact', 'contacts._empty')
                                 </tbody>
